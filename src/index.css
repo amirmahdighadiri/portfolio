@@ -1,1 +1,538 @@
+
 @import "tailwindcss";
+
+/* ========================================
+   1. THEME - Colors & Shadows
+======================================== */
+
+@theme {
+    --color-canvas: #f7f9fc;
+    --color-surface: #ffffff;
+    --color-primary: #1769e0;
+    --color-ink: #102747;
+    --color-muted: #64748b;
+    --color-plight: #dcebff;
+    --color-line: #e7edf5;
+    --color-success: #16a078;
+    --color-onp: #ffffff;
+
+    --shadow-soft: 0 1px 2px rgb(16 39 71 / 0.04),
+    0 8px 24px -8px rgb(16 39 71 / 0.08);
+
+    --shadow-lift: 0 2px 4px rgb(16 39 71 / 0.05),
+    0 16px 32px -12px rgb(23 105 224 / 0.28);
+}
+
+/* ========================================
+   2. DARK THEME
+======================================== */
+
+.dark {
+    --color-canvas: #0b1220;
+    --color-surface: #111b2e;
+    --color-primary: #60a5fa;
+    --color-ink: #e8eef8;
+    --color-muted: #94a3b8;
+    --color-plight: #182d50;
+    --color-line: #24324c;
+    --color-success: #34d399;
+    --color-onp: #0b1220;
+
+    --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.3),
+    0 8px 24px -8px rgb(0 0 0 / 0.4);
+
+    --shadow-lift: 0 2px 4px rgb(0 0 0 / 0.3),
+    0 16px 32px -12px rgb(96 165 250 / 0.25);
+
+    color-scheme: dark;
+}
+
+/* ========================================
+   3. GLOBAL VARIABLES
+======================================== */
+
+:root {
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+    --font: "Vazirmatn", system-ui, -apple-system,
+    "Segoe UI", Tahoma, sans-serif;
+
+    color-scheme: light;
+}
+
+html[lang="en"] {
+    --font: "Inter", "Vazirmatn", system-ui,
+    -apple-system, "Segoe UI", sans-serif;
+}
+
+/* ========================================
+   4. BASE STYLES
+======================================== */
+
+@layer base {
+    *,
+    ::before,
+    ::after {
+        border-color: var(--color-line);
+    }
+
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 5rem;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+        margin: 0;
+        overflow-x: hidden;
+
+        background: var(--color-canvas);
+        color: var(--color-ink);
+
+        font-family: var(--font);
+        line-height: 1.8;
+
+        -webkit-font-smoothing: antialiased;
+
+        transition:
+                background-color 0.3s,
+                color 0.3s;
+    }
+
+    ::selection {
+        background: var(--color-plight);
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 3px;
+        border-radius: 6px;
+    }
+}
+
+/* ========================================
+   5. REUSABLE COMPONENTS
+======================================== */
+
+@layer components {
+
+    /* Main Container */
+    .container-main {
+        @apply mx-auto w-full max-w-[1080px] px-6;
+    }
+
+    /* Primary Button */
+    .btn {
+        @apply inline-flex min-h-[44px] items-center justify-center
+        rounded-xl border border-transparent
+        bg-primary px-5 py-2.5
+        text-[15px] font-medium text-onp
+        shadow-soft transition duration-300
+        hover:-translate-y-0.5 hover:opacity-90
+        active:scale-[0.98];
+    }
+
+    /* Secondary Button */
+    .btn-secondary {
+        @apply inline-flex min-h-[44px] items-center justify-center
+        rounded-xl border border-line
+        bg-surface px-5 py-2.5
+        text-[15px] font-medium text-ink
+        transition duration-300
+        hover:-translate-y-0.5
+        hover:border-primary hover:text-primary
+        active:scale-[0.98];
+    }
+
+    /* Icon Button */
+    .icon-btn {
+        @apply grid h-10 w-10 place-items-center
+        rounded-xl border border-line
+        bg-surface text-ink
+        transition
+        hover:border-primary hover:text-primary cursor-pointer;
+    }
+
+    /* Card */
+    .card {
+        @apply rounded-2xl border border-line
+        bg-surface p-6 shadow-soft;
+    }
+}
+
+/* ========================================
+   6. CUSTOM ANIMATIONS & EFFECTS
+======================================== */
+
+.rv {
+    opacity: 0;
+    translate: 0 20px;
+
+    transition:
+            opacity 0.6s var(--ease),
+            translate 0.6s var(--ease),
+            transform 0.3s var(--ease),
+            box-shadow 0.3s,
+            border-color 0.3s;
+}
+
+.rv.in {
+    opacity: 1;
+    translate: 0 0;
+}
+
+.lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift);
+}
+
+.rise {
+    opacity: 0;
+    animation: rise 0.6s var(--ease) forwards;
+}
+
+.fl {
+    animation: float 5s ease-in-out infinite;
+}
+
+/* Avatar */
+
+.avatar {
+    width: min(300px, 70vw);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    padding: 6px;
+
+    background: conic-gradient(
+            from 0deg,
+            var(--color-primary),
+            transparent 40%,
+            var(--color-primary) 70%,
+            transparent
+    );
+
+    animation: spin 9s linear infinite;
+    box-shadow: var(--shadow-lift);
+}
+
+.avatar .in {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+
+    background: var(--color-surface);
+    overflow: hidden;
+
+    display: grid;
+    place-items: center;
+
+    font-size: 110px;
+    font-weight: 800;
+    color: var(--color-primary);
+
+    animation: spin 9s linear infinite reverse;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Role Animation */
+
+.role {
+    height: 2em;
+    overflow: hidden;
+}
+
+.role span {
+    display: block;
+    animation: swap 0.55s var(--ease);
+}
+
+.caret {
+    display: inline-block;
+    width: 8px;
+    height: 1.1em;
+    margin-inline-start: 4px;
+    vertical-align: text-bottom;
+
+    background: var(--color-primary);
+
+    animation: blink 1s steps(2) infinite;
+}
+
+/* Menu */
+
+.menu {
+    animation: drop 0.3s var(--ease);
+}
+
+/* ========================================
+   7. TIMELINE
+======================================== */
+
+.path {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.path::before {
+    content: "";
+
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 50%;
+
+    width: 2px;
+    margin-left: -1px;
+
+    background: var(--color-line);
+}
+
+.path li {
+    position: relative;
+
+    width: calc(50% - 40px);
+    margin-bottom: 28px;
+    padding: 18px 22px;
+
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: 16px;
+
+    box-shadow: var(--shadow-soft);
+}
+
+.path li:hover {
+    border-color: var(--color-primary);
+}
+
+.path li:last-child {
+    margin-bottom: 0;
+}
+
+.path li:nth-child(even) {
+    margin-inline-start: calc(50% + 40px);
+}
+
+.path li:nth-child(odd) .dot {
+    inset-inline-end: -50px;
+}
+
+.path li:nth-child(even) .dot {
+    inset-inline-start: -50px;
+}
+
+/* Timeline Dot */
+
+.dot {
+    position: absolute;
+    top: 24px;
+
+    width: 20px;
+    height: 20px;
+
+    border-radius: 50%;
+
+    background: var(--color-canvas);
+    border: 2px solid var(--color-line);
+}
+
+.path .done .dot {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.path .now .dot {
+    border-color: var(--color-primary);
+    animation: pulse 2s infinite;
+}
+
+.path .next .dot {
+    border-style: dashed;
+}
+
+/* Timeline Typography */
+
+.path h3 {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.path p {
+    margin: 2px 0 0;
+    font-size: 15px;
+    color: var(--color-muted);
+}
+
+/* Timeline Chip */
+
+.chip {
+    font-size: 12px;
+    padding: 1px 12px;
+
+    border-radius: 999px;
+
+    background: var(--color-plight);
+    margin-inline-start: 10px;
+
+    vertical-align: middle;
+    font-weight: 500;
+    color: var(--color-primary);
+}
+
+/* ========================================
+   8. RESPONSIVE TIMELINE
+======================================== */
+
+@media (min-width: 761px) {
+
+    html[dir="rtl"] .path li.rv:nth-child(odd) {
+        translate: 40px 0;
+    }
+
+    html[dir="rtl"] .path li.rv:nth-child(even) {
+        translate: -40px 0;
+    }
+
+    html[dir="ltr"] .path li.rv:nth-child(odd) {
+        translate: -40px 0;
+    }
+
+    html[dir="ltr"] .path li.rv:nth-child(even) {
+        translate: 40px 0;
+    }
+
+    .path li.rv.in {
+        translate: 0 0;
+    }
+}
+
+@media (max-width: 760px) {
+
+    .path::before {
+        left: auto;
+        margin-left: 0;
+        inset-inline-start: 15px;
+    }
+
+    .path li,
+    .path li:nth-child(even) {
+        width: auto;
+        margin-inline-start: 46px;
+    }
+
+    .path li:nth-child(odd) .dot,
+    .path li:nth-child(even) .dot {
+        inset-inline-end: auto;
+        inset-inline-start: -40px;
+    }
+}
+
+/* ========================================
+   9. KEYFRAMES
+======================================== */
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes drop {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes swap {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0.3;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0
+        color-mix(in srgb, var(--color-primary) 35%, transparent);
+    }
+
+    70% {
+        box-shadow: 0 0 0 12px transparent;
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 transparent;
+    }
+}
+
+/* ========================================
+   10. ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .rise,
+    .rv {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
