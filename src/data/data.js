@@ -10,3 +10,20 @@ export const SITE = {
     github: 'https://github.com/amirmahdighadiri/amirmahdighadiri',
     linkedin: 'https://www.linkedin.com/in/amirmahdi-ghadiri-b6b044346/',
 }
+export const PROJECTS = [
+    {
+        image: "/Projects/giahland.webp",
+        demo: "https://amirmahdighadiri.github.io/giyah-land/index.html",
+        github: "https://github.com/amirmahdighadiri/giyah-land",
+    },
+    {
+        image: "/Projects/karinshop.webp",
+        demo: "https://amirmahdighadiri.github.io/karin-shop/",
+        github: "https://github.com/amirmahdighadiri/karin-shop",
+    },
+    {
+        image: "/Projects/roocket.webp",
+        demo: "",
+        github: "https://github.com/amirmahdighadiri/roocket",
+    },
+]

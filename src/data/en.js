@@ -101,21 +101,19 @@ const en = {
 
         items: [
             {
-                title: "Project one",
-                description:
-                    "Write a short description here: what the problem was and which tools you used.",
+                title: "Giah Land",
+                description: "A plant store with a responsive, polished UI, built with Tailwind CSS and JavaScript. Principled component design and Clean Code keep it easy to maintain and extend."
             },
             {
-                title: "Project two",
-                description: "A short description of the second project.",
+                title: "Karin Shop",
+                description: "An online store built with React and Tailwind CSS, focused on performance and user experience. A clean structure and custom hooks improve speed and scalability."
             },
             {
-                title: "Project three",
-                description: "A short description of the third project.",
+                title: "Roocket",
+                description: "An educational platform in development, built with React and a responsive design. It uses Redux Toolkit for state management and Supabase for the database, with a modular architecture."
             },
         ],
 
-        note: "These cards are samples; replace them with your real projects.",
     },
 
     // Learning path
