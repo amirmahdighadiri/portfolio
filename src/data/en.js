@@ -101,16 +101,19 @@ const en = {
 
         items: [
             {
-                title: "Giah Land",
-                description: "A plant store with a responsive, polished UI, built with Tailwind CSS and JavaScript. Principled component design and Clean Code keep it easy to maintain and extend."
+                title: "Giyah Land",
+                description:
+                    "A responsive online plant store built with JavaScript and Tailwind CSS. The project uses reusable components and a well-organized folder structure to keep the codebase clean and maintainable.",
             },
             {
                 title: "Karin Shop",
-                description: "An online store built with React and Tailwind CSS, focused on performance and user experience. A clean structure and custom hooks improve speed and scalability."
+                description:
+                    "An online store for digital products and accessories, built with React and Tailwind CSS. Reusable components and custom hooks are used to organize the UI and application logic.",
             },
             {
                 title: "Roocket",
-                description: "An educational platform in development, built with React and a responsive design. It uses Redux Toolkit for state management and Supabase for the database, with a modular architecture."
+                description: "An educational platform currently under development, built with React and a modular structure. Redux Toolkit is used for state management, while Supabase handles database integration.",
+                status: "In Development",
             },
         ],
 

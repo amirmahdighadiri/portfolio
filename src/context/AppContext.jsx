@@ -17,7 +17,7 @@ const languages = {
 
 export const AppProvider = ({ children }) => {
     const [language, setLanguage] = useState(() => {
-        return localStorage.getItem("language") || "fa";
+        return localStorage.getItem("language") || "en";
     });
     const [theme, setTheme] = useState(() => {
         return localStorage.getItem("theme") || "light";
