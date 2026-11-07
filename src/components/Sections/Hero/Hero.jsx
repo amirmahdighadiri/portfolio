@@ -24,7 +24,7 @@ function Hero() {
                 <div className="rise grid justify-items-center gap-3.5 max-md:order-first delay-300">
                     <div className="fl">
                         <div className="avatar">
-                            <div className="in">{t.personal.name.charAt(0)}</div>
+                            <div className="in"><img src="/me.webp" alt={t.personal.name} className=""/></div>
                         </div>
                     </div>
                 </div>
