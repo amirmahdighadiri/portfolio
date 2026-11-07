@@ -1,16 +1,39 @@
-# React + Vite
+# 💻 Amirmahdi Ghadiri — Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📖 About Project
 
-Currently, two official plugins are available:
+**Personal Portfolio** is a responsive portfolio website developed using **React** and **Tailwind CSS**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The project showcases my front-end development skills, selected projects, and learning journey. It also includes **Persian and English language support**, **RTL/LTR layout**, and **light and dark themes**.
 
-## React Compiler
+The main goal of this project is to present my work and development progress in a clean, modern, and accessible way.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Technologies used
 
-## Expanding the ESLint configuration
+<img src="https://skillicons.dev/icons?i=html,tailwind,vite,react,js" alt="Technologies used">
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## How to Use
+
+To clone the project, run the following command:
+
+```bash
+git clone https://github.com/amirmahdighadiri/portfolio.git
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Run the development server
+
+```bash
+npm run dev
+```
+
+### Create a production build
+
+```bash
+npm run build
+```
